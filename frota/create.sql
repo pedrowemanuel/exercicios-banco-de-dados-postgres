@@ -5,7 +5,7 @@ CREATE TABLE marca (
 
 CREATE TABLE marca_pneu (
 	id			SERIAL 			PRIMARY KEY,
-	descricao 	VARCHAR(255)	NOT NULL UNIQUE,
+	descricao 	VARCHAR(255)	NOT NULL UNIQUE
 );
 
 CREATE TABLE tipo_eixo (
@@ -29,10 +29,10 @@ CREATE TABLE eixo (
 CREATE TABLE pneu (
 	id 					SERIAL 			PRIMARY KEY,
 	raio 				INT 			NOT NULL,
-	perfil 				VARCHAR(10) 	NOT NULL,
-	largura 			VARCHAR(10) 	NOT NULL,
-	indice_carga		VARCHAR(10) 	NOT NULL,
-	indice_velocidade	VARCHAR(10)		NOT NULL,
+	perfil 				VARCHAR(30) 	NOT NULL,
+	largura 			VARCHAR(45) 	NOT NULL,
+	indice_carga		VARCHAR(45) 	NOT NULL,
+	indice_velocidade	VARCHAR(45)		NOT NULL,
 	id_marca_pneu		INT 			NOT NULL 	REFERENCES marca_pneu
 );
 
@@ -50,3 +50,35 @@ CREATE TABLE eixo_veiculo (
 	id_pneu		INT 		NOT NULL 	REFERENCES pneu
 );
 
+CREATE TABLE vistoria (
+    id              SERIAL      PRIMARY KEY,
+    data_cadastro   TIMESTAMP   NOT NULL,
+    data_vistoria   TIMESTAMP   DEFAULT NULL,
+    id_veiculo      INT         NOT NULL        REFERENCES veiculo,
+    username        VARCHAR(45) NOT NULL
+);
+
+CREATE TABLE medicoes_vistoria  (
+    id                          SERIAL          PRIMARY KEY,
+    raio                        INT             DEFAULT NULL,
+    perfil                      VARCHAR(30)     DEFAULT NULL,
+    largura                     VARCHAR(45)     DEFAULT NULL,
+    indice_carga                VARCHAR(45)     DEFAULT NULL,
+    indice_velocidade           VARCHAR(45)     DEFAULT NULL,
+    id_marca_pneu               INT             NOT NULL        REFERENCES marca_pneu,
+    id_vistoria                 INT             NOT NULL        REFERENCES vistoria,
+    id_pneu                     INT             NOT NULL        REFERENCES pneu           
+);
+
+CREATE TABLE banda (
+    id          SERIAL      PRIMARY KEY,
+    descricao   VARCHAR(45) UNIQUE,
+    posicao     INT         NOT NULL
+);
+
+CREATE TABLE medicao_banda_vistoria (
+    id                    SERIAL      PRIMARY KEY,
+    valor                 FLOAT       NOT NULL,
+    id_banda              INT         NOT NULL    REFERENCES banda,
+    id_medicao_vistoria   INT         NOT NULL    REFERENCES medicoes_vistoria
+);
