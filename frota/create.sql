@@ -13,6 +13,12 @@ CREATE TABLE tipo_eixo (
 	descricao 	VARCHAR(255) 	NOT NULL 	UNIQUE
 );
 
+CREATE TABLE banda (
+    id          SERIAL      	PRIMARY KEY,
+    descricao   VARCHAR(45) 	UNIQUE		NOT NULL,
+    lado     	VARCHAR(45) 	NOT NULL
+);
+
 CREATE TABLE veiculo (
 	id 			SERIAL	 		PRIMARY KEY,
 	descricao 	VARCHAR(255) 	NOT NULL 	UNIQUE,
@@ -52,44 +58,37 @@ CREATE TABLE eixo_veiculo (
 
 CREATE TABLE vistoria_veiculo (
     id              SERIAL      PRIMARY KEY,
-    observacao      VARCHAR(45),
+    observacao      VARCHAR(255),
     data_vistoria   TIMESTAMP   DEFAULT NULL,
     id_veiculo      INT         NOT NULL        REFERENCES veiculo,
     username        VARCHAR(45) NOT NULL
 );
 
 CREATE TABLE vistoria_pneu (
-    id             	 SERIAL      PRIMARY KEY,
-    data_cadastro  	 TIMESTAMP   NOT NULL,
-    data_vistoria  	 TIMESTAMP   DEFAULT NULL,
-    id_vistoria_veiculo  INT         NOT NULL        REFERENCES vistoria_veiculo,
-    username       	 VARCHAR(45) NOT NULL,
-    id_pneu              INT         NOT NULL        REFERENCES pneu
+    id             	    SERIAL      PRIMARY KEY,
+    data_cadastro  	    TIMESTAMP   NOT NULL,
+    id_vistoria_veiculo INT         NOT NULL        REFERENCES vistoria_veiculo,
+    username       	    VARCHAR(45) NOT NULL,
+    id_pneu             INT         NOT NULL        REFERENCES pneu
 );
 
 CREATE TABLE medicao_vistoria  (
     id                          SERIAL          PRIMARY KEY,
-    raio                        INT             DEFAULT NULL,
-    perfil                      VARCHAR(30)     DEFAULT NULL,
-    largura                     VARCHAR(45)     DEFAULT NULL,
-    indice_carga                VARCHAR(45)     DEFAULT NULL,
-    indice_velocidade           VARCHAR(45)     DEFAULT NULL,
+    raio                        INT             NOT NULL,
+    perfil                      VARCHAR(30)     NOT NULL,
+    largura                     VARCHAR(45)     NOT NULL,
+    indice_carga                VARCHAR(45)     NOT NULL,
+    indice_velocidade           VARCHAR(45)     NOT NULL,
     id_marca_pneu               INT             NOT NULL        REFERENCES marca_pneu,
     id_vistoria                 INT             NOT NULL        REFERENCES vistoria_pneu           
 );
 
-CREATE TABLE banda (
-    id          SERIAL      	PRIMARY KEY,
-    descricao   VARCHAR(45) 	UNIQUE		NOT NULL,
-    lado     	VARCHAR(45) 	NOT NULL
-);
-
 CREATE TABLE pneu_banda (
-    id          SERIAL     	 PRIMARY KEY,
+    id          SERIAL     	    PRIMARY KEY,
     observacao  VARCHAR(45),
-    id_pneu 	INT		 NOT NULL    REFERENCES pneu,
-    ordem	INT		 NOT NULL,
-    id_banda    INT		 NOT NULL    REFERENCES banda
+    id_pneu 	INT		        NOT NULL    REFERENCES pneu,
+    ordem	    INT		        NOT NULL,
+    id_banda    INT		        NOT NULL    REFERENCES banda
 );
 
 CREATE TABLE medicao_banda_vistoria (
