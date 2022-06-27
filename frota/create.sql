@@ -37,6 +37,7 @@ CREATE TABLE pneu (
 	raio 				INT 			NOT NULL,
 	perfil 				VARCHAR(30) 	NOT NULL,
 	largura 			VARCHAR(45) 	NOT NULL,
+	altura 			    VARCHAR(45) 	NOT NULL,
 	indice_carga		VARCHAR(45) 	NOT NULL,
 	indice_velocidade	VARCHAR(45)		NOT NULL,
 	id_marca_pneu		INT 			NOT NULL 	REFERENCES marca_pneu
@@ -77,6 +78,7 @@ CREATE TABLE medicao_vistoria  (
     raio                        INT             NOT NULL,
     perfil                      VARCHAR(30)     NOT NULL,
     largura                     VARCHAR(45)     NOT NULL,
+    altura                      VARCHAR(45)     NOT NULL,
     indice_carga                VARCHAR(45)     NOT NULL,
     indice_velocidade           VARCHAR(45)     NOT NULL,
     id_marca_pneu               INT             NOT NULL        REFERENCES marca_pneu,

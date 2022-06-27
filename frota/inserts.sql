@@ -1,4 +1,3 @@
---MARCA
 INSERT INTO marca (descricao) VALUES ('Abarth');
 INSERT INTO marca (descricao) VALUES ('Aixam');
 INSERT INTO marca (descricao) VALUES ('Alfa Romeo');
@@ -73,17 +72,19 @@ INSERT INTO marca (descricao) VALUES ('Volkswagen');
 INSERT INTO marca (descricao) VALUES ('Volvo');
 
 -- MARCA PNEU
-INSERT INTO marca_pneu (descricao) VALUES ('goodyear');
-INSERT INTO marca_pneu (descricao) VALUES ('pirelli');
-INSERT INTO marca_pneu (descricao) VALUES ('michelin');
-INSERT INTO marca_pneu (descricao) VALUES ('toyo');
-INSERT INTO marca_pneu (descricao) VALUES ('dayton');
-INSERT INTO marca_pneu (descricao) VALUES ('multi-mile');
-INSERT INTO marca_pneu (descricao) VALUES ('kenda');
-INSERT INTO marca_pneu (descricao) VALUES ('firestone');
-INSERT INTO marca_pneu (descricao) VALUES ('gt radial');
-INSERT INTO marca_pneu (descricao) VALUES ('marshal');
-INSERT INTO marca_pneu (descricao) VALUES ('yokohama');
+INSERT INTO marca_pneu (descricao) VALUES ('Goodyear');
+INSERT INTO marca_pneu (descricao) VALUES ('Pirelli');
+INSERT INTO marca_pneu (descricao) VALUES ('Michelin');
+INSERT INTO marca_pneu (descricao) VALUES ('Toyo');
+INSERT INTO marca_pneu (descricao) VALUES ('Dayton');
+INSERT INTO marca_pneu (descricao) VALUES ('Multi-mile');
+INSERT INTO marca_pneu (descricao) VALUES ('Kenda');
+INSERT INTO marca_pneu (descricao) VALUES ('Firestone');
+INSERT INTO marca_pneu (descricao) VALUES ('Gt radial');
+INSERT INTO marca_pneu (descricao) VALUES ('Marshal');
+INSERT INTO marca_pneu (descricao) VALUES ('Yokohama');
+INSERT INTO marca_pneu (descricao) VALUES ('Bridgestone');
+INSERT INTO marca_pneu (descricao) VALUES ('Continental');
 
 -- TIPO EIXO
 INSERT INTO tipo_eixo (id, descricao) VALUES (1,'EIXO SIMPLES');
@@ -95,12 +96,40 @@ INSERT INTO tipo_eixo (id, descricao) VALUES (3,'EIXO QUADRODUPLO');
 INSERT INTO eixo (descricao, posicao, id_tipo_eixo) VALUES ('DIANTEIRO', 1, 1);
 INSERT INTO eixo (descricao, posicao, id_tipo_eixo) VALUES ('TRASEIRO', 2, 1);
 INSERT INTO eixo (descricao, posicao, id_tipo_eixo) VALUES ('DIANTEIRO', 1, 2);
-INSERT INTO eixo (descricao, posicao, id_tipo_eixo) VALUES ('TRASEIRO', 2, 2);
-INSERT INTO eixo (descricao, posicao, id_tipo_eixo) VALUES ('DIANTEIRO', 1, 3);
-INSERT INTO eixo (descricao, posicao, id_tipo_eixo) VALUES ('DIANTEIRO', 2, 3);
-INSERT INTO eixo (descricao, posicao, id_tipo_eixo) VALUES ('TRASEIRO', 3, 3);
-INSERT INTO eixo (descricao, posicao, id_tipo_eixo) VALUES ('TRASEIRO', 4, 3);
+INSERT INTO eixo (descricao, posicao, id_tipo_eixo) VALUES ('DIANTEIRO', 2, 2);
+INSERT INTO eixo (descricao, posicao, id_tipo_eixo) VALUES ('TRASEIRO', 3, 2);
+INSERT INTO eixo (descricao, posicao, id_tipo_eixo) VALUES ('TRASEIRO', 4, 2);
 
 -- BANDA
 INSERT INTO banda (descricao, lado) VALUES ('BANDA INTERNA', 'ESQUERDO');
 INSERT INTO banda (descricao, lado) VALUES ('BANDA EXTERNA', 'DIREITO');
+
+-- VEICULO
+INSERT INTO veiculo (veiculo, id_marca) VALUES ('AMAROK CD2.0 16V/S CD2.0 16V TDI 4x2 Die', 71);
+INSERT INTO veiculo (veiculo, id_marca) VALUES ('Hilux 4x2 2.4 Diesel', 68);
+
+-- PNEU
+INSERT INTO pneu (raio, perfil, largura, altura, indice_carga, indice_velocidade, id_marca_pneu) VALUES (13, 55, 175, 70, 82, 'T', 1);
+INSERT INTO pneu (raio, perfil, largura, altura, indice_carga, indice_velocidade, id_marca_pneu) VALUES (13, 55, 175, 70, 82, 'T', 1);
+INSERT INTO pneu (raio, perfil, largura, altura, indice_carga, indice_velocidade, id_marca_pneu) VALUES (13, 55, 175, 70, 82, 'T', 1);
+INSERT INTO pneu (raio, perfil, largura, altura, indice_carga, indice_velocidade, id_marca_pneu) VALUES (13, 55, 175, 70, 82, 'T', 1);
+INSERT INTO pneu (raio, perfil, largura, altura, indice_carga, indice_velocidade, id_marca_pneu) VALUES (13, 55, 175, 70, 82, 'T', 1);
+INSERT INTO pneu (raio, perfil, largura, altura, indice_carga, indice_velocidade, id_marca_pneu) VALUES (15, 54, 180, 80, 86, 'U', 2);
+INSERT INTO pneu (raio, perfil, largura, altura, indice_carga, indice_velocidade, id_marca_pneu) VALUES (15, 54, 180, 80, 86, 'U', 2);
+INSERT INTO pneu (raio, perfil, largura, altura, indice_carga, indice_velocidade, id_marca_pneu) VALUES (15, 54, 180, 80, 86, 'U', 2);
+INSERT INTO pneu (raio, perfil, largura, altura, indice_carga, indice_velocidade, id_marca_pneu) VALUES (15, 54, 180, 80, 86, 'U', 2);
+INSERT INTO pneu (raio, perfil, largura, altura, indice_carga, indice_velocidade, id_marca_pneu) VALUES (15, 54, 180, 80, 86, 'U', 2);
+
+-- PNEU RESERVA
+INSERT INTO pneu_reserva (observacao, id_veiculo, id_pneu) VALUES ('STEP NOVO', 1, 5);
+INSERT INTO pneu_reserva (observacao, id_veiculo, id_pneu) VALUES ('STEP NOVO', 2, 10);
+
+-- EIXO VEICULO
+INSERT INTO eixo_veiculo (id_veiculo, id_eixo, id_pneu) VALUES (1, 3, 1);
+INSERT INTO eixo_veiculo (id_veiculo, id_eixo, id_pneu) VALUES (1, 4, 2);
+INSERT INTO eixo_veiculo (id_veiculo, id_eixo, id_pneu) VALUES (1, 5, 3);
+INSERT INTO eixo_veiculo (id_veiculo, id_eixo, id_pneu) VALUES (1, 6, 4);
+INSERT INTO eixo_veiculo (id_veiculo, id_eixo, id_pneu) VALUES (2, 3, 6);
+INSERT INTO eixo_veiculo (id_veiculo, id_eixo, id_pneu) VALUES (2, 4, 7);
+INSERT INTO eixo_veiculo (id_veiculo, id_eixo, id_pneu) VALUES (2, 5, 8);
+INSERT INTO eixo_veiculo (id_veiculo, id_eixo, id_pneu) VALUES (2, 6, 9);
