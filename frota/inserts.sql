@@ -105,8 +105,8 @@ INSERT INTO banda (descricao, lado) VALUES ('BANDA INTERNA', 'ESQUERDO');
 INSERT INTO banda (descricao, lado) VALUES ('BANDA EXTERNA', 'DIREITO');
 
 -- VEICULO
-INSERT INTO veiculo (veiculo, id_marca) VALUES ('AMAROK CD2.0 16V/S CD2.0 16V TDI 4x2 Die', 71);
-INSERT INTO veiculo (veiculo, id_marca) VALUES ('Hilux 4x2 2.4 Diesel', 68);
+INSERT INTO veiculo (descricao, id_marca) VALUES ('AMAROK CD2.0 16V/S CD2.0 16V TDI 4x2 Die', 71);
+INSERT INTO veiculo (descricao, id_marca) VALUES ('Hilux 4x2 2.4 Diesel', 68);
 
 -- PNEU
 INSERT INTO pneu (raio, perfil, largura, altura, indice_carga, indice_velocidade, id_marca_pneu) VALUES (13, 55, 175, 70, 82, 'T', 1);
