@@ -82,7 +82,7 @@ CREATE TABLE medicao_vistoria  (
     indice_carga                VARCHAR(45)     NOT NULL,
     indice_velocidade           VARCHAR(45)     NOT NULL,
     id_marca_pneu               INT             NOT NULL        REFERENCES marca_pneu,
-    id_vistoria                 INT             NOT NULL        REFERENCES vistoria_pneu           
+    id_vistoria_pneu            INT             NOT NULL        REFERENCES vistoria_pneu           
 );
 
 CREATE TABLE pneu_banda (
